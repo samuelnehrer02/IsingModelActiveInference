@@ -3,11 +3,8 @@ A simple simulation project of the Ising model implemented using a collection of
 
 ### 1D lattice
 ![Ising 1D Simulation](animations/ising1d_300.gif)
-
 ![Agent Pair Correlation](animations/agent_pair_correlation_300.gif)
-
 ![Total EFE](animations/total_efe_300.gif)
-
 ![Hamiltonian Energy](animations/hamiltonian_energy_300.gif)
 
 ### 2D lattice 

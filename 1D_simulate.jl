@@ -26,25 +26,25 @@ end
 model_state_store_20th = [state[20] for state in model_state_store]
 model_state_store_30th = [state[30] for state in model_state_store]
 
-anim_correlation = @animate for t in 1:5:T
-    p = plot(1:5:t, [mean(model_state_store_20th[i:min(i+4, end)]) for i in 1:5:t],
+anim_correlation = @animate for t in 1:2:T
+    p = plot(1:2:t, [mean(model_state_store_20th[i:min(i+1, end)]) for i in 1:2:t],
         label="20th Agent",
         xlabel="Time",
         ylabel="State", 
-        title="Agent pair state correlation γ = 300", 
+        title="Agent pair state correlation, γ = 300", 
         xlims=(0, 300),
         ylims=(-0.1, 1.1),
         lw=2,
         color=:firebrick
     )
-    plot!(p, 1:5:t, [mean(model_state_store_30th[i:min(i+4, end)]) for i in 1:5:t],
+    plot!(p, 1:2:t, [mean(model_state_store_30th[i:min(i+1, end)]) for i in 1:2:t],
         label="30th Agent",
         lw=2,
         color=:springgreen
     )
 end
 
-gif(anim_correlation, "animations/agent_pair_correlation.gif", fps=8)
+gif(anim_correlation, "animations/agent_pair_correlation_300.gif", fps=4)
 
 
 
