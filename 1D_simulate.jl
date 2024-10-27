@@ -1,6 +1,6 @@
 num_agents = 50
 settings = Dict("use_states_info_gain" => false)
-parameters =Dict("lr_pA" => 1.0,"fr_pA" => 0.5, "alpha" => 1.0, "gamma" => 300.0)
+parameters =Dict("lr_pA" => 1.0,"fr_pA" => 0.5, "alpha" => 1.0, "gamma" => 1.0)
 ising_1D = Ising1D(num_agents, generative_model, settings, parameters);
 
 T = 300
@@ -31,7 +31,7 @@ anim_correlation = @animate for t in 1:2:T
         label="20th Agent",
         xlabel="Time",
         ylabel="State", 
-        title="Agent pair state correlation, γ = 300", 
+        title="Agent pair state correlation, γ = 1", 
         xlims=(0, 300),
         ylims=(-0.1, 1.1),
         lw=2,
@@ -45,7 +45,7 @@ anim_correlation = @animate for t in 1:2:T
     )
 end
 
-gif(anim_correlation, "animations/agent_pair_correlation_300.gif", fps=4)
+gif(anim_correlation, "animations/agent_pair_correlation_1.gif", fps=4)
 
 
 
@@ -53,7 +53,7 @@ anim = @animate for (i, state) in enumerate(model_state_store)
     # Create the heatmap
     hm = heatmap(
         reshape(state, 1, :),
-        title = "1D Lattice - $(length(ising_1D.agents)) Agents, t=$i, γ=300",
+        title = "1D Lattice - $(length(ising_1D.agents)) Agents, t=$i, γ=1",
         xlabel = "",
         ylabel = "",
         ytick = false,
@@ -71,14 +71,14 @@ anim = @animate for (i, state) in enumerate(model_state_store)
     end
 end
 
-gif(anim, "animations/ising1d_300.gif", fps=8)
+gif(anim, "animations/ising1d_1.gif", fps=8)
 
 anim_efe = @animate for t in 1:T
-    p = plot(total_efe_1[1:t], color=:lightblue, legend=:topleft, label="(π) Active", title="Total Expected Free Energy, γ=300", size=(800, 400), xlims=(0, 300), ylims=(-140, -75))
+    p = plot(total_efe_1[1:t], color=:lightblue, legend=:topleft, label="(π) Active", title="Total Expected Free Energy, γ=1", size=(800, 400), xlims=(0, 300), ylims=(-145, -110))
     plot!(p, total_efe_2[1:t], color=:red, label="(π) Inactive")
 end
 
-gif(anim_efe, "animations/total_efe_300.gif", fps=8)
+gif(anim_efe, "animations/total_efe_1.gif", fps=8)
 
 # Calculate the Hamiltonian energy.
 # We use the following formula for the 1D Ising model:
@@ -90,9 +90,9 @@ energy_vector = [
 ]
 
 anim_energy = @animate for t in 1:T
-    plot(energy_vector[1:t], lw=2, color=:lawngreen, title="Hamiltonian Energy, γ=300", legend=false, xlims=(0, 300), size=size=(800, 400))
+    plot(energy_vector[1:t], lw=2, color=:lawngreen, title="Hamiltonian Energy, γ=1", legend=false, xlims=(0, 300), size=size=(800, 400))
 end
 
-gif(anim_energy, "animations/hamiltonian_energy_300.gif", fps=8)
+gif(anim_energy, "animations/hamiltonian_energy_1.gif", fps=8)
 
 
