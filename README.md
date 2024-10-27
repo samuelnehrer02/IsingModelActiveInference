@@ -3,6 +3,7 @@ A simple simulation project of the Ising model implemented using a collection of
 
 ### 1D lattice
 Simulated 1D lattice with a high expected free energy precision γ:
+
 ![Ising 1D Simulation](animations/ising1d_300.gif)
 ![Hamiltonian Energy](animations/hamiltonian_energy_300.gif)
 ![Total EFE](animations/total_efe_300.gif)
